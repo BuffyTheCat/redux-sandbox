@@ -20,21 +20,22 @@ const reduser = (state = 0, action) => {
 
 const store = createStore(reduser);
 
+const inc = () => ({ type: 'INC'});
+const dec = () => ({ type: 'DEC'});
+const rnd = (payload) => ({ type: 'RND', payload});
+
 document.getElementsByClassName('increment')[0].addEventListener('click', () => {
-    store.dispatch({ type: 'INC'});
+    store.dispatch(inc());
 });
 
 
 document.getElementsByClassName('decrement')[0].addEventListener('click', () => {
-    store.dispatch({ type: 'DEC'});
+    store.dispatch(dec());
 });
 
 document.getElementsByClassName('random')[0].addEventListener('click', () => {
     const payload = Math.floor(Math.random()*10);
-    store.dispatch({ 
-        type: 'RND',
-        payload
-    });
+    store.dispatch(rnd(payload));
 });
 
 const update = () => {
